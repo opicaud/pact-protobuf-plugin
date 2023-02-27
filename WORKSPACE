@@ -20,7 +20,7 @@ crate_universe_dependencies(bootstrap = True)
 load("@rules_rust//crate_universe:defs.bzl", "crate", "crates_repository", "splicing_config")
 load("@rules_rust//crate_universe:defs.bzl", "crates_repository", "crate")
 crates_repository(
-    name = "crate_index_protobuf",
+    name = "crate_index",
     cargo_lockfile = "//:Cargo.lock",
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "//:cargo-bazel-lock.json",
@@ -29,5 +29,5 @@ crates_repository(
     ],
 )
 
-load("@crate_index_protobuf//:defs.bzl", "crate_repositories")
+load("@crate_index//:defs.bzl", "crate_repositories")
 crate_repositories()

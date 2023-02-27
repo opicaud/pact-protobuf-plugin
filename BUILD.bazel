@@ -2,14 +2,14 @@ package(default_visibility = ["//visibility:public"])
 
 load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_library")
 load("@rules_rust//cargo:defs.bzl", "cargo_build_script")
-load("@crate_index_protobuf//:defs.bzl", "all_crate_deps")
+load("@crate_index//:defs.bzl", "all_crate_deps")
 
 # This will run the build script from the root of the workspace, and
 # collect the outputs.
 cargo_build_script(
     name = "build_script",
     srcs = ["build.rs"],
-    deps = all_crate_deps(build = "True") + ["@crate_index_protobuf//:os_info"],
+    deps = all_crate_deps(build = "True"),
         build_script_env = {
             "CARGO_PKG_VERSION": "1.0.0",
             "CARGO_PKG_VERSION_MAJOR": "1",
@@ -21,10 +21,9 @@ cargo_build_script(
             "CARGO_PKG_HOMEPAGE": "http://perdu.com",
             "CARGO_PKG_LICENSE": "free",
             "CARGO_PKG_REPOSITORY": "git",
-            "RUSTDOC": "$(execpath @rules_rust//rust/toolchain:current_rustdoc_files)",
-         },
-         tools = ["@rules_rust//rust/toolchain:current_rustdoc_files"],
-
+            "RUSTDOC": "$(execpath @rules_rust//crate_universe:rustdoc)",
+        },
+        tools = ["@rules_rust//crate_universe:rustdoc"],
 
 
 )
@@ -32,8 +31,7 @@ cargo_build_script(
 rust_library(
     name = "pact_protobuf_plugin",
     srcs = glob(["src/**/*.rs"]),
-    deps = all_crate_deps(normal = "True") + [":build_script"],
-    visibility = ["//visibility:public"],
+    deps = all_crate_deps(normal = "True") + [":build_script"]
 
 )
 
@@ -41,7 +39,6 @@ rust_binary(
     name = "pact_protobuf_plugin_bin",
     srcs = ["src/main.rs"],
     deps = all_crate_deps(normal = "True") + [":pact_protobuf_plugin"],
-     visibility = ["//visibility:public"],
 )
 
 filegroup(
