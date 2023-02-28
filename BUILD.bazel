@@ -32,6 +32,7 @@ rust_library(
     name = "pact_protobuf_plugin",
     srcs = glob(["src/**/*.rs"]),
     deps = all_crate_deps(normal = "True") + [":build_script"]
+    visibility = ["//visibility:public"],
 
 )
 
