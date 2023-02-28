@@ -12,7 +12,7 @@ def repos():
 
     maybe(
         git_repository,
-        name = "source",
+        name = "source_protobuf",
         remote = "https://github.com/opicaud/pact-protobuf-plugin",
         branch = "main",
     )
