@@ -39,10 +39,11 @@ rust_binary(
     name = "pact_protobuf_plugin_bin",
     srcs = ["src/main.rs"],
     deps = all_crate_deps(normal = "True") + [":pact_protobuf_plugin"],
+     visibility = ["//visibility:public"],
 )
 
 filegroup(
     name = "pact-plugin",
-    srcs = ['pact-plugin.json', ':pact_protobuf_plugin_bin'],
+    srcs = ['pact-plugin.json'],
     visibility = ["//visibility:public"],
 )
