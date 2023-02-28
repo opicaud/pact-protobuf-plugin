@@ -21,9 +21,10 @@ cargo_build_script(
             "CARGO_PKG_HOMEPAGE": "http://perdu.com",
             "CARGO_PKG_LICENSE": "free",
             "CARGO_PKG_REPOSITORY": "git",
-            "RUSTDOC": "$(execpath @rules_rust//crate_universe:rustdoc)",
-        },
-        tools = ["@rules_rust//crate_universe:rustdoc"],
+            "RUSTDOC": "$(execpath @rules_rust//rust/toolchain:current_rustdoc_files)",
+         },
+         tools = ["@rules_rust//rust/toolchain:current_rustdoc_files"],
+
 
 
 )
