@@ -10,7 +10,7 @@ def deps():
 
 def load_crat():
     crates_repository(
-        name = "crate_index",
+        name = "crate_index_protobuf",
         cargo_lockfile = "@source//:Cargo.lock",
         generator = "@cargo_bazel_bootstrap//:cargo-bazel",
         lockfile = "@source//:cargo-bazel-lock.json",
