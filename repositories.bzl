@@ -9,11 +9,3 @@ def repos():
         sha256 = "d125fb75432dc3b20e9b5a19347b45ec607fabe75f98c6c4ba9badaab9c193ce",
         urls = ["https://github.com/bazelbuild/rules_rust/releases/download/0.17.0/rules_rust-v0.17.0.tar.gz"],
     )
-
-    maybe(
-        git_repository,
-        name = "source_protobuf",
-        remote = "https://github.com/opicaud/pact-protobuf-plugin",
-        commit = "a58c4a192c7a134001e8ad72f57bf1608150f0a1",
-        shallow_since = "1683395140 +0200"
-    )

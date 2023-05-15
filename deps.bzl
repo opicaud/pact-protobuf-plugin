@@ -11,10 +11,10 @@ def deps():
 def load_crat():
     crates_repository(
         name = "crate_index_protobuf",
-        cargo_lockfile = "@source_protobuf//:Cargo.lock",
+        cargo_lockfile = "@//:Cargo.lock",
         generator = "@cargo_bazel_bootstrap//:cargo-bazel",
-        lockfile = "@source_protobuf//:cargo-bazel-lock.json",
+        lockfile = "@//:cargo-bazel-lock.json",
         manifests = [
-            "@source_protobuf//:Cargo.toml"
+            "@//:Cargo.toml"
         ]
     )
