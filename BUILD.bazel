@@ -2,7 +2,7 @@ package(default_visibility = ["//visibility:public"])
 
 load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_library")
 load("@rules_rust//cargo:defs.bzl", "cargo_build_script")
-load("@crate_index//:defs.bzl", "all_crate_deps")
+load("@crate_index_protobuf//:defs.bzl", "all_crate_deps")
 
 # This will run the build script from the root of the workspace, and
 # collect the outputs.
@@ -21,11 +21,9 @@ cargo_build_script(
             "CARGO_PKG_HOMEPAGE": "http://perdu.com",
             "CARGO_PKG_LICENSE": "free",
             "CARGO_PKG_REPOSITORY": "git",
-            "RUSTDOC": "$(execpath @rules_rust//crate_universe:rustdoc)",
+            "RUSTDOC": "$(execpath @rust_darwin_x86_64__x86_64-apple-darwin__stable_tools//:rustdoc)",
         },
-        tools = ["@rules_rust//crate_universe:rustdoc"],
-
-
+        tools = ["@rust_darwin_x86_64__x86_64-apple-darwin__stable_tools//:rustdoc"],
 )
 
 rust_library(
