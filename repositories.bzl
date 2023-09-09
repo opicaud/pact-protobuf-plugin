@@ -14,6 +14,6 @@ def repos():
         git_repository,
         name = "source_protobuf",
         remote = "https://github.com/opicaud/pact-protobuf-plugin",
-        commit = "3a2b8b621beb044b675c5809389844a304574370",
+        branch = "toolchain"
     )
 
