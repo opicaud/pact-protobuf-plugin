@@ -48,8 +48,16 @@ filegroup(
 
 pact_protobuf_plugin_toolchain(
     name = "toolchain_impl",
-    protobuf_plugin = ":pact_protobuf_plugin_bin",
+    protobuf_plugin = ":pact_prototuf_plugin_toolchain",
     manifest = ":pact-plugin"
+)
+
+genrule(
+    name = "pact_prototuf_plugin_toolchain",
+    outs = ["pact-protobuf-plugin"],
+    srcs = ["@pact_prototuf_plugin_archive//file"],
+    cmd = "gzip -d - < $< > $@",
+
 )
 
 toolchain(
