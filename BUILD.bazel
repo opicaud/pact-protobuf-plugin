@@ -49,7 +49,14 @@ filegroup(
 pact_protobuf_plugin_toolchain(
     name = "toolchain_impl",
     protobuf_plugin = ":pact_prototuf_plugin_toolchain",
-    manifest = ":pact-plugin"
+    manifest = ":pact_plugin_json_archive"
+)
+
+genrule(
+    name = "pact_plugin_json_archive",
+    outs = ["pact-plugin.json"],
+    srcs = ["@pact_plugin_json_archive//file"],
+    cmd = "cp $< $@",
 )
 
 genrule(
@@ -57,7 +64,6 @@ genrule(
     outs = ["pact-protobuf-plugin"],
     srcs = ["@pact_prototuf_plugin_archive//file"],
     cmd = "gzip -d - < $< > $@",
-
 )
 
 toolchain(
